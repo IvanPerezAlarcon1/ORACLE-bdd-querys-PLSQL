@@ -1,0 +1,365 @@
+create table usuarios (
+    nombre varchar2(30) not null,
+    clave varchar2(10) not null,
+    primary key(nombre)
+);
+/*Cuando un campo es primary key, no se permite repetir el valor, lo mismo ocurre en caso de que se intente hacer un UPDATE sobre un campo, si es igual a un valor existente no se permite la acción*/
+
+describe usuarios;
+
+create table agenda(
+    apellido varchar2(30),
+    nombre varchar2(20),
+    domicilio varchar2(30),
+    telefono varchar2(11)
+);
+
+
+  drop table empleados;
+
+ create table empleados(
+  documento char(8),
+  nombre varchar2(20),
+  apellido varchar2(20),
+  sueldo number(6,2),
+  cantidadhijos number(2,0),
+  fechaingreso date,
+  primary key(documento)
+ );
+ insert into empleados values('22222222','Juan','Perez',200,2,'10/10/1980');
+ insert into empleados values('22333333','Luis','Lopez',250,0,'01/02/1990');
+ insert into empleados values('22444444','Marta','Perez',350,1,'02/05/1995');
+ insert into empleados values('22555555','Susana','Garcia',400,2,'15/12/2018');
+ insert into empleados values('22666666','Jose Maria','Morales',500,3,'25/08/2015');
+
+
+
+
+
+
+
+ drop table libros;
+
+  create table libros(
+  codigo number(5),
+  titulo varchar2(40),
+  autor varchar2(30) default 'Desconocido',
+  editorial varchar2(20),
+  edicion date,
+  precio number(6,2),
+  cantidad number(3),
+  primary key(codigo)
+ );
+ create unique index codigo_unico on libros(codigo); /* Código para crear un indice unico e irrepetible en una tabla*/
+ 
+ 
+  create table libros22(
+  titulo varchar2(40),
+  autor varchar2(30),
+  editorial varchar2(15),
+  precio number(5,2),
+  cantidad number(3)
+ );
+ drop table libros22;
+ 
+  insert into libros22
+  values('El aleph','Borges','Planeta',35,null);
+ insert into libros22
+  values('Martin Fierro','Jose Hernandez','Emece',22.20,200);
+ insert into libros22
+  values('Martin Fierro','Jose Hernandez','Planeta',40,200);
+ insert into libros22
+  values('Antologia poetica','J.L. Borges','Planeta',null,150);
+ insert into libros22
+  values('Aprenda PHP','Mario Molina','Emece',18,null);
+ insert into libros22
+  values('Manual de PHP', 'J.C. Paez', 'Siglo XXI',56,120);
+ insert into libros22
+  values('Cervantes y el quijote','Bioy Casares- J.L. Borges','Paidos',null,100);
+ insert into libros22
+  values('Harry Potter y la piedra filosofal','J.K. Rowling',default,45.00,90);
+ insert into libros22
+  values('Harry Potter y la camara secreta','J.K. Rowling','Emece',null,100);
+ insert into libros22
+  values('Alicia en el pais de las maravillas','Lewis Carroll','Paidos',42,80);
+ insert into libros22
+  values('PHP de la A a la Z',null,null,110,0);
+ insert into libros22
+  values('Uno','Richard Bach','Planeta',25,null);
+ 
+ drop table visitantes;
+ create table visitantes(
+  nombre varchar2(30),
+  edad number(2),
+  sexo char(1) default 'f',
+  domicilio varchar2(30),
+  ciudad varchar2(20) default 'Cordoba',
+  telefono varchar2(11),
+  mail varchar2(30) default 'no tiene',
+  montocompra number(6,2)
+ );
+ 
+ insert into visitantes
+  values ('Susana Molina',35,default,'Colon 123',default,null,null,59.80);
+ insert into visitantes
+  values ('Marcos Torres',29,'m',default,'Carlos Paz',default,'marcostorres@hotmail.com',150.50);
+ insert into visitantes
+  values ('Mariana Juarez',45,default,default,'Carlos Paz',null,default,23.90);
+ insert into visitantes (nombre, edad,sexo,telefono, mail)
+  values ('Fabian Perez',36,'m','4556677','fabianperez@xaxamail.com');
+ insert into visitantes (nombre, ciudad, montocompra)
+  values ('Alejandra Gonzalez','La Falda',280.50);
+ insert into visitantes (nombre, edad,sexo, ciudad, mail,montocompra)
+  values ('Gaston Perez',29,'m','Carlos Paz','gastonperez1@gmail.com',95.40);
+ insert into visitantes
+  values ('Liliana Torres',40,default,'Sarmiento 876',default,default,default,85);
+ insert into visitantes
+  values ('Gabriela Duarte',21,null,null,'Rio Tercero',default,'gabrielaltorres@hotmail.com',321.50);
+
+select * from visitantes;
+
+create table autos (
+    patente char(4),
+    marca varchar2(20),
+    modelo char(4),
+    precio number(8,2),
+    primary key (patente)
+);
+
+create table visitas (
+    nombre varchar2(30) default 'Anónimo',
+    mail varchar2(50),
+    pais varchar2(20),
+    fecha date
+);
+
+ insert into visitas values ('Ana Maria Lopez','AnaMaria@hotmail.com','Argentina',to_date('2020/05/03 21:02:44', 'yyyy/mm/dd hh24:mi:ss'));
+ insert into visitas values ('Gustavo Gonzalez','GustavoGGonzalez@hotmail.com','Chile',to_date('2020/02/13 11:08:10', 'yyyy/mm/dd hh24:mi:ss'));
+ insert into visitas values ('Juancito','JuanJosePerez@hotmail.com','Argentina',to_date('2020/07/02 14:12:00', 'yyyy/mm/dd hh24:mi:ss'));
+ insert into visitas values ('Fabiola Martinez','MartinezFabiola@hotmail.com','Mexico',to_date('2020/06/17 20:00:00', 'yyyy/mm/dd hh24:mi:ss'));
+ insert into visitas values ('Fabiola Martinez','MartinezFabiola@hotmail.com','Mexico',to_date('2020/02/08 20:05:40', 'yyyy/mm/dd hh24:mi:ss'));
+ insert into visitas values ('Juancito','JuanJosePerez@hotmail.com','Argentina',to_date('2020/07/06 18:00:00', 'yyyy/mm/dd hh24:mi:ss'));
+ insert into visitas values ('Juancito','JuanJosePerez@hotmail.com','Argentina',to_date('2019/10/05 23:00:00', 'yyyy/mm/dd hh24:mi:ss'));
+
+/* MEDICAMENTOS CON VARIOS EJEMPLOS*/
+ drop table medicamentos;
+
+ create table medicamentos(
+  codigo number(5),
+  nombre varchar2(20),
+  laboratorio varchar2(20),
+  precio number(6,2),
+  cantidad number(3) not null,
+  fechavencimiento date not null,
+  primary key(codigo)
+ );
+create unique index codigo_unico on medicamentos(codigo); /* Código para crear un indice unico e irrepetible en una tabla, USAR DESPUÉS DE CREAR LA TABLA*/
+
+/*secuencia necesaria para que un id de campo se haga autoincrementable*/
+CREATE SEQUENCE COD_MEDICAMENTO
+START WITH 1
+INCREMENT BY 1;
+
+DROP SEQUENCE COD_MEDICAMENTO;
+
+/* INSERCIONES DE DATOS*/
+
+insert into medicamentos (codigo,nombre,laboratorio,precio,cantidad) values (COD_MEDICAMENTO.nextval,'farmaco 1','lab 1',300,8);
+insert into medicamentos (codigo,nombre,laboratorio,precio,cantidad) values (COD_MEDICAMENTO.nextval,'farmaco 2','lab 2',500,10);
+insert into medicamentos (codigo,nombre,laboratorio,precio,cantidad) values (COD_MEDICAMENTO.nextval,'farmaco 3','lab 3',540,11);
+ insert into medicamentos
+  values(100,'Sertal','Roche',5.2,1,'01/02/2015');
+ insert into medicamentos 
+  values(1,'Buscapina',null,4.10,3,'01/03/2016');
+ insert into medicamentos 
+  values(280,'Amoxidal 500','Bayer',15.60,100,'01/05/2017');
+ insert into medicamentos
+  values(301,'Paracetamol 500','Bago',1.90,10,'01/02/2018');
+ insert into medicamentos 
+  values(400,'Bayaspirina','Bayer',2.10,150,'01/08/2019'); 
+ insert into medicamentos 
+  values(560,'Amoxidal jarabe','Bayer',5.10,250,'01/10/2020'); 
+select * from medicamentos;
+
+/* CREAR TRIGGER PARA INSERTAR "CODIGO" AUTOMATICAMENTE*/
+CREATE TRIGGER TRIG_AUTOINCREMENT
+BEFORE INSERT ON medicamentos
+FOR EACH ROW
+BEGIN
+SELECT COD_MEDICAMENTO.NEXTVAL INTO :NEW.codigo from DUAL;
+END;
+
+drop trigger TRIG_AUTOINCREMENT;
+
+insert into medicamentos (nombre,laboratorio,precio,cantidad) values ('farmaco 4','lab 4',40,1);
+
+ create table clientes (
+  nombre varchar2(30) not null,
+  domicilio varchar2(30),
+  ciudad varchar2(20),
+  provincia varchar2(20),
+  telefono varchar2(11)
+);
+
+ insert into clientes
+  values ('Lopez Marcos','Colon 111','Cordoba','Cordoba','null');
+ insert into clientes
+  values ('Perez Ana','San Martin 222','Cruz del Eje','Cordoba','4578585');
+ insert into clientes
+  values ('Garcia Juan','Rivadavia 333','Villa del Rosario','Cordoba','4578445');
+ insert into clientes
+  values ('Perez Luis','Sarmiento 444','Rosario','Santa Fe',null);
+ insert into clientes
+  values ('Pereyra Lucas','San Martin 555','Cruz del Eje','Cordoba','4253685');
+ insert into clientes
+  values ('Gomez Ines','San Martin 666','Santa Fe','Santa Fe','0345252525');
+ insert into clientes
+  values ('Torres Fabiola','Alem 777','Villa del Rosario','Cordoba','4554455');
+ insert into clientes
+  values ('Lopez Carlos',null,'Cruz del Eje','Cordoba',null);
+ insert into clientes
+  values ('Ramos Betina','San Martin 999','Cordoba','Cordoba','4223366');
+ insert into clientes
+  values ('Lopez Lucas','San Martin 1010','Posadas','Misiones','0457858745');
+
+/*------------------------------------------------------------------------------------------*/
+
+
+
+
+
+insert into usuarios (nombre,clave) values ('Iván','ivan12345');
+insert into usuarios (nombre,clave) values ('Iván','ivan12345');
+insert into usuarios (nombre,clave) values ('logan','logan12345');
+insert into usuarios (clave, nombre) values ('jesus12345','jesús');
+
+insert into agenda (apellido,nombre,domicilio,telefono) values ('Pérez','gutz','av. siempre viva #123','985746345');
+insert into agenda (apellido,nombre,domicilio,telefono) values ('son','goku','ciudad z','956787878');
+
+ insert into libros
+  values(1,'El aleph','Borges','Emece','15/01/2000',15.90,8);
+ insert into libros
+  values(2,'Cervantes y el quijote','Borges','Paidos',null,null,90);
+ insert into libros
+  values(3,'Alicia en el pais de las maravillas','Lewis Carroll',null,'25/03/2000',19.90,80);
+ insert into libros
+  values(4,'Martin Fierro','Jose Hernandez','Emece','18/05/2000',25.90,79);
+ insert into libros
+  values(5,'Antología poética','Borges','Logan','25/08/2000',32,23);
+ insert into libros
+  values(6,'Java en 10 minutos','Mario Molina','farma','11/02/2007',45.80,45);
+ insert into libros
+  values(7,'Martin Fierro','Jose Hernandez','Young','23/11/2006',40,26);
+
+
+select * from usuarios;
+select * from visitas;
+select nombre, mail, pais, fecha, extract(month from fecha) as mes from visitas order by pais, mes desc; /*el order by se puede aplicar con 2 columnas*/
+select nombre, mail, pais, fecha, extract(month from fecha) as mes from visitas order by 3, 5 desc; /*el order by se puede aplicar con 2 columnas*/
+
+select * from agenda;
+select * from libros22;
+select * from libros order by titulo desc;
+select * from libros order by edicion;
+select * from libros order by cantidad,editorial; /*En caso de que 2 campos tengan el mismo valor, se pasa a la siguiente categoria para ordenar*/
+select titulo, autor, editorial, edicion, precio, cantidad, precio*cantidad as monto_total from libros order by monto_total asc;
+select * from libros where precio between 24 and 46;
+select * from libros where fecha between '15/01/00' and '23/11/06';
+select * from libros where codigo in 1;
+select * from libros where codigo not in 1;
+select * from libros where editorial in ('Emece','farma');
+
+select * from libros where autor like 'Lewis Carroll';
+select * from libros where autor like 'lewis carroll';
+select * from libros where autor like 'Lewis%';
+select * from libros where autor not like '%Carroll';
+select * from libros where titulo like '%Java%' or autor like '%Bor%';
+
+/* HAVING es la condicion que se le asignará a los registros ya agrupados por order by*/
+select editorial,count(*) as cantidad from libros22 group by editorial having count(*) > 2;
+select editorial, avg(precio) as promedio_precio from libros22 group by editorial having avg(precio) > 25;
+
+select ciudad,provincia,count(*) from clientes group by ciudad, provincia;
+select ciudad,provincia,count(*) from clientes group by ciudad, provincia having count(*) < 2;
+select ciudad, count(*) from clientes where domicilio like '%San Martin%' group by ciudad having count(*)<2 and ciudad <> 'Cordoba';
+/*----------------------------------------------------------------------------------*/
+select * from clientes;
+
+ select editorial, max(precio) as mayor from libros22 group by editorial having max(precio)<100 and max(precio)>30 order by editorial; 
+  
+select * from visitantes;
+select ciudad, count(telefono) from visitantes group by ciudad; /* cantidad de telefonos por ciudad*/
+select sexo, count(nombre) from visitantes group by sexo; /* nro de personas por sexo*/
+select sexo,ciudad,max(montocompra),min(montocompra) from visitantes group by  sexo, ciudad;
+select ciudad, count(*) as cantidad_con_mail from visitantes where mail is not null and mail <>'no tiene' group by ciudad;
+
+select editorial,count(*) from libros group by editorial;
+select editorial,count(precio) from libros group by editorial; /*Muestra el nro de libros con precios no nulos agrupados por editorial*/
+select editorial,sum(cantidad) from libros group by editorial; /* cant. de libros en stock por editorial*/
+select editorial,max(precio) as mayor ,min(precio) as minimo from libros group by editorial; /*Muestra el valor mayor y el menor para el precio de los libros para cada editorial*/
+select editorial,avg(precio) from libros group by editorial; /*valor promedio de los libros por editorial*/
+select editorial,count(*) from libros where precio > 3 group by editorial;
+
+
+
+
+select * from medicamentos where precio in (5.1,4.1,1.9,2.1);
+select * from medicamentos where precio between 1 and 5.1;
+
+
+select * from libros where extract(year from edicion)=2012;
+select titulo,autor,editorial,precio, cantidad, precio*cantidad as total from libros;
+update libros set precio = 200 where precio is null;
+select titulo || ' - ' || autor as titulo_autor, precio*cantidad as monto_total from libros; /*CONCATENACIÓN*/
+select titulo || ' - ' || precio as titulo_precio, precio*cantidad as monto_total from libros; 
+select * from medicamentos; 
+select * from libros where PRECIO is null;
+select * from libros where PRECIO is not null;
+
+
+
+ 
+/*---------------------------DISTINCT-----------------------------------------*/
+select distinct autor from libros22; /*Obetener registros sin repetición*/
+select distinct autor from libros22 where autor is not null; /*Obetener registros sin repetición*/
+select count(distinct autor) from libros22;
+select distinct editorial,count(distinct autor) from libros22 group by editorial;
+select distinct editorial,count(distinct autor) from libros22 where autor is not null group by editorial ;
+select distinct titulo,editorial from libros22 order by titulo; /* El distinct se aplica a todos los registros*/
+select * from libros;
+select * from clientes;
+select distinct ciudad from clientes;
+select count(distinct ciudad) from clientes;
+select distinct ciudad from clientes where provincia = 'Cordoba';
+select provincia, count(distinct ciudad) from clientes group by provincia;
+
+
+
+/*------------------------------------CLAVE PRIMARIA COMPUESTA--------------------------------------*/
+create table vehiculos(
+    patente char(6) not null,
+    tipo char(1), /* 'a' = auto, 'm' = moto */
+    hora_llegada date,
+    horasalida date,
+    primary key (patente, horallegada)
+);
+
+
+/* elimina una fila de la tabla, es más eficiente TRUNCTAE TABLE, ya que este último no deja registros y borra todo de disco y crea una nueva tabla, por lo que resulta más rápida*/
+delete from agenda where ROWNUM <=1;
+
+drop table usuarios;
+drop table libros;
+drop table medicamentos;
+truncate table medicamentos;
+
+
+update usuarios set nombre = 'perro', clave = 'perro1234' where nombre= 'jesús' and ROWNUM <2;
+update usuarios set nombre = 'buey', clave = 'buey1234' where nombre= 'logan' and ROWNUM <2;
+update libros set edicion = '15/01/1999' where edicion = '15/01/00';
+update libros set edicion = '25/03/02' where edicion = '25/03/00';
+update libros set edicion = '18/05/2009' where edicion = '18/05/00';
+
+
+
+
